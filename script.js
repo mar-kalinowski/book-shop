@@ -21,7 +21,7 @@ basketImg.src = "./assets/img/basket.jpg";
 
 const basketCounter = document.createElement("span");
 basketCounter.classList.add("basket_counter");
-basketCounter.innerText = "1";
+basketCounter.innerText = "0";
 
 const basketContent = document.createElement("ul");
 basketContent.classList.add("basket_content");
@@ -61,6 +61,17 @@ booksWrapper.append(booksContent);
 const bookList = document.createElement("ul");
 bookList.classList.add("book_list");
 booksContent.append(bookList);
+
+const orderContent = document.createElement("div");
+orderContent.classList.add("order_content");
+
+const orderContentConfirmBtn = document.createElement("button");
+orderContentConfirmBtn.classList.add("order_content_confirm_btn");
+orderContentConfirmBtn.innerText = "Confirm your order";
+
+orderContentConfirmBtn.addEventListener("click", () => {
+  location.href = "../order/order.html";
+});
 
 function displayBooks(book) {
   fetch("./books.json") //path to the file with json data
@@ -139,10 +150,10 @@ function displayBooks(book) {
           bookDescription.style.display = "none";
         });
         addToBasketBtn.addEventListener("click", (event) => {
+          // event.preventDefault();
           console.log(event.target);
-          const orderContent = document.createElement("div");
-          orderContent.classList.add("order_content");
-          const orderList = document.createElement("ul");
+
+          const orderList = document.createElement("div");
           orderList.classList.add("order_list");
           const orderElement = document.createElement("div");
           orderElement.classList.add("order_element");
@@ -150,12 +161,39 @@ function displayBooks(book) {
           orderElementImg.classList.add("order_element_img");
           const orderElementTitle = document.createElement("h4");
           orderElementTitle.classList.add("order_element_title");
-          const orderElementAuthor = document.createElement("p");
-          orderElementAuthor.classList.add("order_element_author");
+          /* const orderElementAuthor = document.createElement("p");
+          orderElementAuthor.classList.add("order_element_author"); */
           const orderElementPrice = document.createElement("p");
           orderElementPrice.classList.add("order_element_price");
           const orderSum = document.createElement("p");
           orderSum.classList.add("order_sum");
+          const orderElementRemoveBtn = document.createElement("button");
+          orderElementRemoveBtn.classList.add("order_element_remove_btn");
+
+          orderElementImg.innerText = imageLink;
+          orderElementTitle.innerText = title;
+          orderElementPrice.innerText = price;
+          orderElementRemoveBtn.innerText = "X";
+
+          orderElementRemoveBtn.addEventListener("click", () => {
+            orderList.innerHTML = "";
+          });
+
+          orderElement.append(
+            orderElementImg,
+            orderElementTitle,
+            orderElementPrice,
+            orderElementRemoveBtn
+          );
+
+          // orderedElements.push(orderElement);
+          orderList.append(orderElement);
+          orderContent.append(orderList, orderContentConfirmBtn);
+          console.log(orderContent);
+          basketWrapper.append(orderContent);
+          basketWrapper.addEventListener("click", () => {
+            orderContent.style.display = "block";
+          });
         });
       });
     });
