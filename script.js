@@ -17,7 +17,7 @@ basketWrapper.classList.add("basket_wrapper");
 
 const basketImg = document.createElement("img");
 basketImg.classList.add("basket_img");
-basketImg.src = "../assets/img/basket.jpg";
+basketImg.src = "./assets/img/basket.jpg";
 
 const basketCounter = document.createElement("span");
 basketCounter.classList.add("basket_counter");
