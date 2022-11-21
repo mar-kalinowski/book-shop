@@ -1,0 +1,38 @@
+.delivery_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: auto;
+  margin: 0 auto;
+  background-color: lightgray;
+}
+
+.delivery_form label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  height: 40px;
+}
+
+.delivery_form input {
+  width: 200px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.user_fieldset {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment_fieldset {
+  display: flex;
+}
+
+.payment_fieldset label {
+  width: 60px;
+  height: auto;
+}
