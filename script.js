@@ -70,7 +70,7 @@ orderContentConfirmBtn.classList.add("order_content_confirm_btn");
 orderContentConfirmBtn.innerText = "Confirm your order";
 
 orderContentConfirmBtn.addEventListener("click", () => {
-  location.href = "../order/order.html";
+  location.href = "./order/order.html";
 });
 
 function displayBooks(book) {
