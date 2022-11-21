@@ -10,7 +10,56 @@
 </head>
 
 <body>
-    <h1>The delivery form will be here</h1>
+    <form class="delivery_form" action="" method="post">
+        <h2>Delivery details</h2>
+        <fieldset user_fieldset>
+            <legend>Please feel all the required fields</legend>
+            <label for="name">Name:
+                <input type="text" name="name" id="name" autocomplete="name" required>
+            </label>
+            <label for="surname">Surname:
+                <input type="text" name="surname" id="surname" autocomplete="surname" required>
+            </label>
+            <label for="date">Delivery date:
+                <input type="date" name="date" id="date" required>
+            </label>
+            <label for="street">Street:
+                <input type="text" name="street" id="street" autocomplete="street" required>
+            </label>
+            <label for="house_no">House number:
+                <input type="text" name="house_no" id="house_no" autocomplete="house_no" required>
+            </label>
+            <label for="flat_no">Flat number:
+                <input type="number" name="flat_no" id="flat_no" autocomplete="flat_no">
+            </label>
+            <fieldset class="payment_fieldset">
+                <h3>Choose the payment type:</h3>
+                <label for="cash">Cash
+                    <input type="radio" name="radio" id="cash">
+                </label>
+                <label for="card">Card
+                    <input type="radio" name="radio" id="card">
+                </label>
+            </fieldset>
+            <fieldset>
+                <legend>You can choose two gifts:</legend>
+                <label for="">
+                    <input type="checkbox">
+                    Pack as a gift</label>
+                <label for="">
+                    <input type="checkbox">
+                    Add postcard</label>
+                <label for="">
+                    <input type="checkbox">
+                    Provide 2% discount to the next time</label>
+                <label for="">
+                    <input type="checkbox">
+                    Branded pen or pencil</label>
+            </fieldset>
+        </fieldset>
+        <button type="submit">Confirm</button>
+
+    </form>
 </body>
 
 </html>
