@@ -70,7 +70,7 @@ booksContent.append(bookList);
 config.orderContent.classList.add("order_content");
 
 const orderContentConfirmBtn = document.createElement("button");
-orderContentConfirmBtn.classList.add("order_content_confirm_btn");
+orderContentConfirmBtn.classList.add("order_content_confirm_btn", "btn");
 orderContentConfirmBtn.innerText = "Confirm your order";
 
 orderContentConfirmBtn.addEventListener("click", () => {
@@ -83,10 +83,10 @@ function displayBooks(config) {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      // console.log(data);
 
       data.forEach((book, index) => {
-        console.log(book);
+        // console.log(book);
 
         const bookElement = document.createElement("li");
         bookElement.classList.add("book_element");
@@ -113,22 +113,22 @@ function displayBooks(config) {
         bookAuthor.classList.add("book_author");
 
         const addToBasketBtn = document.createElement("button");
-        addToBasketBtn.classList.add("add_to_basket_btn");
+        addToBasketBtn.classList.add("add_to_basket_btn", "btn");
         addToBasketBtn.innerText = "Add to basket";
 
         const showMoreBtn = document.createElement("button");
-        showMoreBtn.classList.add("show_more_btn");
+        showMoreBtn.classList.add("show_more_btn", "btn");
         showMoreBtn.innerText = "Show more";
 
         const showMoreCloseBtn = document.createElement("button");
-        showMoreCloseBtn.classList.add("show_more_close_btn");
-        showMoreCloseBtn.innerText = "X";
+        showMoreCloseBtn.classList.add("show_more_close_btn", "btn");
+        showMoreCloseBtn.innerText = "x";
 
         const { id, title, price, description, imageLink, author } = book;
 
-        bookAuthor.innerText = author;
-        bookTitle.innerText = title;
-        bookPrice.innerText = price;
+        bookAuthor.innerText = `Author: ${author}`;
+        bookTitle.innerText = `Title: ${title}`;
+        bookPrice.innerText = `${price} PLN`;
         bookDescriptionText.innerText = description;
         bookId.innerText = id;
         bookImg.src = imageLink;
@@ -157,11 +157,12 @@ function displayBooks(config) {
         addToBasketBtn.addEventListener("click", (event) => {
           //  console.log(event.target.parentElement, data[index]);
           console.log(data[index]);
+          console.log(this);
 
           config.updateBasketContent(book);
 
-          basketWrapper.addEventListener("click", () => {
-            orderContent.style.display = "block";
+          config.basketWrapper.addEventListener("click", () => {
+            config.orderContent.style.display = "block";
           });
         });
       });
@@ -193,7 +194,7 @@ function updateBasketContent(book) {
     const orderElementPrice = document.createElement("p");
     orderElementPrice.classList.add("order_element_price");
     const orderElementRemoveBtn = document.createElement("button");
-    orderElementRemoveBtn.classList.add("order_element_remove_btn");
+    orderElementRemoveBtn.classList.add("order_element_remove_btn", "btn");
 
     const { imageLink, title, price } = item;
 
@@ -201,7 +202,7 @@ function updateBasketContent(book) {
 
     orderElementImg.src = imageLink;
     orderElementTitle.innerText = title;
-    orderElementPrice.innerText = price;
+    orderElementPrice.innerText = `${price} PLN`;
     orderElementRemoveBtn.innerText = "X";
 
     orderElementRemoveBtn.addEventListener("click", () => {
@@ -219,14 +220,15 @@ function updateBasketContent(book) {
 
     orderList.append(orderElement);
     this.orderContent.append(orderList, orderContentConfirmBtn);
-    this.orderContent.style.display = "block";
+    this.orderContent.style.display = "flex";
     this.basketWrapper.append(this.orderContent);
   }
 
   if (this.basketItems.length > 0) {
     const orderSum = document.createElement("p");
     orderSum.classList.add("order_sum");
-    orderSum.innerText = "Total sum: " + totalSum;
+    // orderSum.innerText = "Total sum: " + totalSum;
+    orderSum.innerText = `Total sum: ${totalSum} PLN`;
     this.orderContent.append(orderSum);
   }
 }
